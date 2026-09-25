@@ -19,3 +19,4 @@ backend/src/main/resources/static
 # IDE
 .vscode
 .idea
+.github
