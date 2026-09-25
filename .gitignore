@@ -6,9 +6,11 @@ target/
 # React
 frontend/node_modules
 frontend/dist
+frontend/node
 
 # Spring Boot
 backend/target
+backend/src/main/resources/static
 *.log
 
 # Environment

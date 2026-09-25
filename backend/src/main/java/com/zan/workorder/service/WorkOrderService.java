@@ -16,10 +16,25 @@ public class WorkOrderService {
     public WorkOrder create(WorkOrder w){return repo.save(w);}
     public WorkOrder update(Long id, WorkOrder incoming){
         WorkOrder w=get(id);
-        w.setTitle(incoming.getTitle()); w.setDescription(incoming.getDescription());
-        w.setClientName(incoming.getClientName()); w.setBuildingName(incoming.getBuildingName());
-        w.setDeviceMacId(incoming.getDeviceMacId()); w.setPriority(incoming.getPriority());
-        w.setStatus(incoming.getStatus()); w.setAssignedTo(incoming.getAssignedTo());
+        w.setTitle(incoming.getTitle()); 
+        w.setDescription(incoming.getDescription());
+        w.setClientName(incoming.getClientName()); 
+        w.setBuildingName(incoming.getBuildingName());
+        w.setFloorName(incoming.getFloorName());
+        w.setAreaName(incoming.getAreaName());
+        w.setDeviceName(incoming.getDeviceName());
+        w.setDeviceType(incoming.getDeviceType());
+        w.setDeviceMacId(incoming.getDeviceMacId()); 
+        w.setPriority(incoming.getPriority());
+        w.setStatus(incoming.getStatus()); 
+        w.setAssignedTo(incoming.getAssignedTo());
+        w.setCreatedBy(incoming.getCreatedBy());
+        if (incoming.getLastReportedTime() != null) {
+            w.setLastReportedTime(incoming.getLastReportedTime());
+        }
+        if (incoming.getCreatedTime() != null && w.getCreatedTime() == null) {
+            w.setCreatedTime(incoming.getCreatedTime());
+        }
         if(w.getStatus()==WorkOrderStatus.COMPLETED && w.getCompletedAt()==null) w.setCompletedAt(LocalDateTime.now());
         if(w.getStatus()!=WorkOrderStatus.COMPLETED) w.setCompletedAt(null);
         return repo.save(w);
