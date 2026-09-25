@@ -3,15 +3,17 @@ services:
     image: mysql:8.4
     container_name: zan-workorder-mysql
     restart: unless-stopped
+    ports:
+      - "3306:3306"
     environment:
-      MYSQL_DATABASE: configpage
-      MYSQL_USER: zanprduser
-      MYSQL_PASSWORD: Insp!ron154
-      MYSQL_ROOT_PASSWORD: Insp!ron154
+      MYSQL_DATABASE: zan_workorder
+      MYSQL_USER: tharik
+      MYSQL_PASSWORD: Tharik@123
+      MYSQL_ROOT_PASSWORD: Tharik@123
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-pInsp!ron154"]
+      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-pTharik@123"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -21,9 +23,9 @@ services:
     container_name: zan-workorder-backend
     restart: unless-stopped
     environment:
-      DB_URL: jdbc:mysql://108.248.232.249:3306/configpage?useSSL=false&serverTimezone=UTC
-      DB_USER: zanprduser
-      DB_PASSWORD: Insp!ron154
+      DB_URL: ${DB_URL:-jdbc:mysql://mysql:3306/zan_workorder?useSSL=false&serverTimezone=UTC}
+      DB_USER: tharik
+      DB_PASSWORD: Tharik@123
     depends_on:
       mysql:
         condition: service_healthy

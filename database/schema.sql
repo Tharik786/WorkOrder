@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS configpage;
-CREATE USER IF NOT EXISTS 'zanprduser'@'%' IDENTIFIED BY 'Insp!ron154';
-GRANT ALL PRIVILEGES ON configpage.* TO 'zanprduser'@'%';
+CREATE DATABASE IF NOT EXISTS zan_workorder;
+CREATE USER IF NOT EXISTS 'tharik'@'%' IDENTIFIED BY 'Tharik@123';
+GRANT ALL PRIVILEGES ON zan_workorder.* TO 'tharik'@'%';
 FLUSH PRIVILEGES;
-USE configpage;
+USE zan_workorder;
 
 CREATE TABLE IF NOT EXISTS workorder (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
