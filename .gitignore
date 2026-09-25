@@ -15,6 +15,7 @@ backend/src/main/resources/static
 
 # Environment
 .env
+.env.example
 
 # IDE
 .vscode
